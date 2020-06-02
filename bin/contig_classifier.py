@@ -8,7 +8,7 @@ def time_print(str):
 	print("\033[32m%s\033[0m %s"%(time.strftime('[%H:%M:%S]',time.localtime(time.time())), str))
 
 
-def pre_assign(in_bam_dir, ref_fa, kmer_size, wrk_dir, threads):
+def contig_classifier(in_bam_dir, ref_fa, kmer_size, wrk_dir, threads):
 	script_dir = sys.path[0]
 	if not os.path.exists(wrk_dir):
 		os.mkdir(wrk_dir)
@@ -55,4 +55,4 @@ if __name__ == "__main__":
 		in_bam_dir, ref_fa, kmer_size, wrk_dir, threads = sys.argv[1:]
 		threads = int(threads)
 		kmer_size = int(kmer_size)
-		pre_assign(in_bam_dir, ref_fa, kmer_size, wrk_dir, threads)
+		contig_classifier(in_bam_dir, ref_fa, kmer_size, wrk_dir, threads)
