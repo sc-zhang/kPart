@@ -25,6 +25,8 @@ def contig_classifier(in_bam_dir, ref_fa, kmer_size, wrk_dir, threads):
 	time_print("Grouping reads with bam")
 	reads_dir = os.path.join(wrk_dir, 'grouped_reads')
 	for bam in os.listdir(in_bam_dir):
+		if bam.split('.')[-1] != 'bam':
+			continue
 		time_print("\tDealing %s"%bam)
 		bam_name = bam.split('.')[0]
 		fn = os.path.join(in_bam_dir, bam)
