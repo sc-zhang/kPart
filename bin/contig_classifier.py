@@ -15,7 +15,12 @@ def contig_classifier(in_bam_dir, ref_fa, kmer_size, wrk_dir, threads):
 	kmer_dir = os.path.join(wrk_dir, "kmers")
 	ref_kmer_dir = os.path.join(kmer_dir, "ref")
 	time_print("Generating reference kmers")
-	os.system("%s/get_seq_all_kmers.py %s %d %s %d"%(script_dir, ref_fa, kmer_size, ref_kmer_dir, threads))
+	if os.path.exists(ref_kmer_dir):
+		time_print("%s already exists, skipped"%ref_kmer_dir)
+	else:
+		cmd = "%s/get_seq_all_kmers.py %s %d %s %d"%(script_dir, ref_fa, kmer_size, ref_kmer_dir, threads)
+		time_print("Running: %s"%cmd)
+		os.system(cmd)
 
 	time_print("Grouping reads with bam")
 	reads_dir = os.path.join(wrk_dir, 'grouped_reads')
@@ -24,7 +29,12 @@ def contig_classifier(in_bam_dir, ref_fa, kmer_size, wrk_dir, threads):
 		bam_name = bam.split('.')[0]
 		fn = os.path.join(in_bam_dir, bam)
 		out_dir = os.path.join(reads_dir, bam_name)
-		os.system("%s/group_reads_with_bam.py %s %s %d"%(script_dir, fn, out_dir, threads))
+		if os.path.exists(out_dir):
+			time_print("%s already exists, skipped"%out_dir)
+		else:
+			cmd = "%s/group_reads_with_bam.py %s %s %d"%(script_dir, fn, out_dir, threads)
+			time_print("Running: %s"%cmd)
+			os.system(cmd)
 	
 	time_print("Generating reads kmers")
 	qry_kmer_dirs = []
@@ -33,16 +43,31 @@ def contig_classifier(in_bam_dir, ref_fa, kmer_size, wrk_dir, threads):
 		fq_dir = os.path.join(reads_dir, sample)
 		out_dir = os.path.join(kmer_dir, sample)
 		qry_kmer_dirs.append(out_dir)
-		os.system("%s/get_reads_all_kmers.py %s %d %s %d"%(script_dir, fq_dir, kmer_size, out_dir, threads))
+		if os.path.exists(out_dir):
+			time_print("%s already exists, skipped"%out_dir)
+		else:
+			cmd = "%s/get_reads_all_kmers.py %s %d %s %d"%(script_dir, fq_dir, kmer_size, out_dir, threads)
+			time_print("Running: %s"%cmd)
+			os.system(cmd)
 	
 	time_print("Statistic kmer dist")
 	qry_kmer_dir = ','.join(qry_kmer_dirs)
 	stat_file = os.path.join(wrk_dir, 'kmer_dist.csv')
-	os.system("%s/stat_kmer_dist.py %s %s %s %d"%(script_dir, ref_kmer_dir, qry_kmer_dir, stat_file, threads))
+	if os.path.exists(stat_file):
+		time_print("%s already exists, skipped"%stat_file)
+	else:
+		cmd = "%s/stat_kmer_dist.py %s %s %s %d"%(script_dir, ref_kmer_dir, qry_kmer_dir, stat_file, threads)
+		time_print("Running: %s"%cmd)
+		os.system(cmd)
 
 	time_print("Classifying contigs")
 	classify_file = os.path.join(wrk_dir, 'kmer_dist_classified.csv')
-	os.system("%s/classify_result.py %s %s"%(stat_file, classify_file))
+	if os.path.exists(classify_file):
+		time_print("%s already exists, skipped"%classify_file)
+	else:
+		cmd = "%s/classify_result.py %s %s"%(stat_file, classify_file)
+		time_print("Running: %s"%cmd)
+		os.system(cmd)
 
 	time_print("Finished")
 
