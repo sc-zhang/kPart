@@ -40,7 +40,7 @@ def write_kmers(seq, ks, fn):
 
 def get_all_kmers(in_fa, ks, out_dir, ts):
 	if not os.path.exists(out_dir):
-		os.mkdir(out_dir)
+		os.makedirs(out_dir)
 
 	fa_db = {}
 	time_print("Loading fasta and generating kmers")

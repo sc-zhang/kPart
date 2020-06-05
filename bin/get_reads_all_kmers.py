@@ -46,7 +46,7 @@ def write_kmers(in_fq, ks, out_kmer):
 
 def get_all_kmers(in_fq_dir, ks, out_kmer_dir, ts):
 	if not os.path.exists(out_kmer_dir):
-		os.mkdir(out_kmer_dir)
+		os.makedirs(out_kmer_dir)
 	kmer_db = {}
 	cnt = 0
 	time_print("Loading reads and generating kmers")

@@ -26,7 +26,7 @@ def write_reads(in_bam, out_dir, ctg):
 
 def filter_reads(in_bam, out_dir, threads):
 	if os.path.exists(out_dir) == False:
-		os.mkdir(out_dir)
+		os.makedirs(out_dir)
 	
 	time_print("Filter reads")
 	with pysam.AlignmentFile(in_bam, 'rb') as bam:
