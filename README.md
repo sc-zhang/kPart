@@ -77,6 +77,6 @@ ContigName|No. of Kmers|No. of Kmers shared by parents|No. of Kmers present only
 tig00000002|104260|81698|8366|252|Father
 tig00000005|57940|37234|426|448|Undetermined
 
-**Notice: **if kmers from contig only present in one sample is greater than that in the other sample more than 2 folds, we mark the contig with this sample, or we mark it "Undetermined".
+**Notice: ** if kmers from contig only present in one sample is greater than that in the other sample more than 2 folds, we mark the contig with this sample, or we mark it "Undetermined".
 
 
