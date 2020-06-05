@@ -17,7 +17,7 @@ def classify_result(in_csv, out_csv):
 					sample_list = []
 					for info in data[-2:]:
 						sample_list.append(info.split()[-1])
-					data.append("Classify")
+					data.append("Classification")
 					fout.write("%s\n"%(','.join(data)))
 				else:
 					ctg = data[0]
@@ -43,7 +43,7 @@ def classify_result(in_csv, out_csv):
 					elif top_vals[1]*1.0/top_vals[0] > 2.0:
 						data.append(sample_list[top_idx[1]])
 					else:
-						data.append('undermine')
+						data.append('Undetermined')
 					fout.write("%s\n"%(','.join(data)))
 	time_print("Finished")
 
