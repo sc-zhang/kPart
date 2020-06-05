@@ -11,7 +11,7 @@ def time_print(str):
 def contig_classifier(in_bam_dir, ref_fa, kmer_size, wrk_dir, threads):
 	script_dir = sys.path[0]
 	if not os.path.exists(wrk_dir):
-		os.mkdir(wrk_dir)
+		os.makedirs(wrk_dir)
 	kmer_dir = os.path.join(wrk_dir, "kmers")
 	ref_kmer_dir = os.path.join(kmer_dir, "ref")
 	time_print("Generating reference kmers")
