@@ -22,6 +22,9 @@ def classify_result(in_csv, out_csv):
 				else:
 					ctg = data[0]
 					vals = list(map(int, data[3:]))
+					for i in range(0, len(vals)):
+						if vals[i] == 0:
+							vals[i] = 1
 					if vals[0]*1.0/vals[1] > 2.0:
 						data.append(sample_list[0])
 					elif vals[1]*1.0/vals[0] > 2.0:
