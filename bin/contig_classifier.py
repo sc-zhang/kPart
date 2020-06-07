@@ -67,7 +67,7 @@ def contig_classifier(in_bam_dir, ref_fa, kmer_size, wrk_dir, threads):
 	if os.path.exists(classify_file):
 		time_print("%s already exists, skipped"%classify_file)
 	else:
-		cmd = "%s/classify_result.py %s %s"%(stat_file, classify_file)
+		cmd = "%s/classify_result.py %s %s"%(script_dir, stat_file, classify_file)
 		time_print("Running: %s"%cmd)
 		os.system(cmd)
 
