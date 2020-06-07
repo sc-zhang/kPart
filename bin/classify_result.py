@@ -22,26 +22,10 @@ def classify_result(in_csv, out_csv):
 				else:
 					ctg = data[0]
 					vals = list(map(int, data[3:]))
-					val_db = {}
-					for i in range(0, len(vals)):
-						if vals[i] == 0:
-							vals[i] += 1
-						if vals[i] not in val_db:
-							val_db[vals[i]] = []
-						val_db[vals[i]].append(idx)
-					top_idx = []
-					for i in sorted(val_db, reverse=True):
-						if len(top_idx) == 2:
-							break
-						for idx in val_db[i]:
-							if len(top_idx) == 2:
-								break
-							top_idx.append(i)
-					top_vals = [vals[top_idx[0]], vals[top_idx[1]]]
-					if top_vals[0]*1.0/top_vals[1] > 2.0:
-						data.append(sample_list[top_idx[0]])
-					elif top_vals[1]*1.0/top_vals[0] > 2.0:
-						data.append(sample_list[top_idx[1]])
+					if vals[0]*1.0/vals[1] > 2.0:
+						data.append(sample_list[0])
+					elif vals[1]*1.0/vals[0] > 2.0:
+						data.append(sample_list[1])
 					else:
 						data.append('Undetermined')
 					fout.write("%s\n"%(','.join(data)))
