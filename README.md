@@ -16,7 +16,7 @@ Python modules:
 cd /path/to/install
 git clone https://github.com/sc-zhang/TrioCC.git
 cd TrioCC/bin
-chmod +x *.py
+chmod +x *
 
 # Optional
 echo 'export PATH=/path/to/install/TrioCC/bin:$PATH' >> ~/.bash_profile
@@ -28,7 +28,7 @@ source ~/.bash_profile
 #### 1. Simple usage with pipeline
 
 ```shell
-TrioCC.py <in_bam_folder> <reference_fasta> <kmer_size> <wrk_dir> <threads>
+TrioCC <in_bam_folder> <reference_fasta> <kmer_size> <wrk_dir> <threads>
 ```
 
 **<in_bam_folder>** is a folder only contain two sorted and indexed bam, with name like AA.sorted.bam, AA is the name of parents. bam file is generate by mapping parents' reads to reference_fasta.
