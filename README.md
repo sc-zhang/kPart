@@ -37,9 +37,9 @@ TrioCC -b <in_bam_folder> -r <reference_fasta> -k <kmer_size> -w <wrk_dir> -t <t
 
 **<kmer_size>** is the size of kmer, default=21
 
-**<wrk_dir>** is the work directory, default="worker"
+**<wrk_dir>** is the work directory, default=\"worker\"
 
-**<threads>**  is threads for running
+**\<threads\>**  is threads for running
 
 #### 2. Run some steps separately
 
