@@ -45,7 +45,7 @@ def stat_kmer_dist(in_ref_dir, in_qry_dirs, out_stat, ts):
 		qry_n = in_qry_dir.split('/')[-1]
 		qry_dbs[qry_n] = {}
 		for fn in os.listdir(in_qry_dir):
-			ctg = fn.split('.')[0]
+			ctg = '.'.join(fn.split('.')[:-1])
 			qry_dbs[qry_n][ctg] = [i, os.path.join(in_qry_dir, fn)]
 	
 	time_print("Statistic")
@@ -53,7 +53,7 @@ def stat_kmer_dist(in_ref_dir, in_qry_dirs, out_stat, ts):
 	res = []
 	for fn in os.listdir(in_ref_dir):
 		ref_fn = os.path.join(in_ref_dir, fn)
-		ctg = fn.split('.')[0]
+		ctg = '.'.join(fn.split('.')[:-1])
 		r = pool.apply_async(sub_stat, (ref_fn, ctg, qry_dbs,))
 		res.append(r)
 	pool.close()
