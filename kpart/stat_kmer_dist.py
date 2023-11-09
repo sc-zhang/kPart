@@ -73,7 +73,7 @@ def stat_kmer_dist(in_ref_dir, in_qry_dirs, out_stat, ts):
     qry_list = sorted(qry_list)
     time_print("Writing result")
     with open(out_stat, 'w') as fout:
-        fout.write("ContigName,No. of Kmers,")
+        fout.write("ContigName,No. of kmers,")
         fout.write("\"No. of shared kmers\",")
         tmp_list = []
         for qry_n in qry_list:
