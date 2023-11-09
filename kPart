@@ -2,7 +2,7 @@
 import sys
 import os
 import argparse
-import time
+from kpart.utils import time_print
 
 
 def get_opts():
@@ -19,10 +19,6 @@ def get_opts():
     group.add_argument('-t', '--threads', help='threads, default=10', type=int, default=10)
 
     return group.parse_args()
-
-
-def time_print(str):
-    print("\033[32m%s\033[0m %s" % (time.strftime('[%H:%M:%S]', time.localtime(time.time())), str))
 
 
 def contig_classifier(in_bam_dir, ref_fa, kmer_size, wrk_dir, threads):
