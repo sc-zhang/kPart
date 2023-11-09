@@ -2,11 +2,7 @@
 import sys
 import multiprocessing
 import os
-import time
-
-
-def time_print(str):
-	print("\033[32m%s\033[0m %s"%(time.strftime('[%H:%M:%S]',time.localtime(time.time())), str))
+from utils import time_print
 
 
 def sub_stat(ref_fn, ctg, qry_dbs):

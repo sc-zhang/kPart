@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 import sys
-import time
-
-
-def time_print(str):
-	print("\033[32m%s\033[0m %s"%(time.strftime('[%H:%M:%S]',time.localtime(time.time())), str))
+from utils import time_print
 
 
 def classify_result(in_csv, out_csv):

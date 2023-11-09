@@ -1,14 +1,9 @@
 #!/usr/bin/env python
 import sys
 import os
-import gzip
 import pysam
 import multiprocessing
-import time
-
-
-def time_print(str):
-	print("\033[32m%s\033[0m %s"%(time.strftime('[%H:%M:%S]',time.localtime(time.time())), str))
+from utils import time_print
 
 
 def write_reads(in_bam, out_dir, ctg):
@@ -25,7 +20,7 @@ def write_reads(in_bam, out_dir, ctg):
 
 
 def filter_reads(in_bam, out_dir, threads):
-	if os.path.exists(out_dir) == False:
+	if not os.path.exists(out_dir):
 		os.makedirs(out_dir)
 	
 	time_print("Filter reads")
