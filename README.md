@@ -16,7 +16,7 @@ Python modules:
 cd /path/to/install
 git clone https://github.com/sc-zhang/kPart.git
 cd kPart
-chmod +x kPart
+chmod +x kPart.py
 chmod +x kpart/*
 
 # Optional
