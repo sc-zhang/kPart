@@ -29,7 +29,7 @@ source ~/.bash_profile
 #### 1. Simple usage with pipeline
 
 ```shell
-usage: kPart [-h] -r REFERENCE -b BAM [-k KMER] [-w WORKDIR] [-t THREADS]
+usage: kPart.py [-h] -r REFERENCE -b BAM [-k KMER] [-w WORKDIR] [-t THREADS]
 
 options:
   -h, --help            show this help message and exit
