@@ -17,10 +17,9 @@ cd /path/to/install
 git clone https://github.com/sc-zhang/kPart.git
 cd kPart
 chmod +x kPart.py
-chmod +x kpart/*
 
 # Optional
-echo 'export PATH=/path/to/install/kPart:/path/to/install/kPart/kpart:$PATH' >> ~/.bash_profile
+echo 'export PATH=/path/to/install/kPart:$PATH' >> ~/.bash_profile
 source ~/.bash_profile
 ```
 
@@ -50,14 +49,14 @@ If you have a cluster, you can run some steps separately to save time.
 **Step 1. generate reference kmers**
 
 ```shell
-/path/to/install/kPart/kpart/get_seq_all_kmers.py <ref_fasta> <kmer_size> <out_ref_kmer_dir> <threads>
+python /path/to/install/kPart/kpart/get_seq_all_kmers.py <ref_fasta> <kmer_size> <out_ref_kmer_dir> <threads>
 ```
 
 **Step 2. generate parents' kmers**
 
 ```shell
 # Extract reads into different groups with contig
-/path/to/install/kPart/kpart/group_reads_with_bam.py <bam_file> <out_fastq_dir> <threads>
+python /path/to/install/kPart/kpart/group_reads_with_bam.py <bam_file> <out_fastq_dir> <threads>
 # <bam_file> must be sorted and indexed
 
 # Generate kmers with reads
@@ -70,10 +69,10 @@ get_reads_all_kmers.py <fq_dir> <kmer_size> <out_qry_kmer_dir> <threads>
 **Step 3. classify contigs**
 
 ```shell
-/path/to/install/kPart/kpart/stat_kmer_dist.py <ref_kmer_dir> <father_kmer_dir,mother_kmer_dir> <stat_file> <threads>
+python /path/to/install/kPart/kpart/stat_kmer_dist.py <ref_kmer_dir> <father_kmer_dir,mother_kmer_dir> <stat_file> <threads>
 # <father_kmer_dir,mother_kmer_dir> is the directorys of father's kmers and mother's kmers separated by comma
 
-/path/to/install/kPart/kpart/classify_result.py <stat_file> <classify_file>
+python /path/to/install/kPart/kpart/classify_result.py <stat_file> <classify_file>
 ```
 
 #### 3. Result
