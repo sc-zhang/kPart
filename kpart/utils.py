@@ -6,17 +6,18 @@ def time_print(info):
 
 
 def reverse_kmer(kmer):
-    rev_kmer = ""
+    rev_kmer = []
     base_db = {'A': 'T', 'T': 'A', 'G': 'C', 'C': 'G'}
-    for base in kmer.upper()[::-1]:
+    for base in kmer[::-1]:
         if base in base_db:
-            rev_kmer += base_db[base]
+            rev_kmer.append(base_db[base])
         else:
-            rev_kmer += base
-    return rev_kmer
+            rev_kmer.append(base)
+    return ''.join(rev_kmer)
 
 
 def get_kmer(kmer_db, seq, ks):
+    seq = seq.upper()
     for i in range(0, len(seq) - ks + 1):
         kmer = seq[i: i + ks]
         rev_kmer = reverse_kmer(kmer)
